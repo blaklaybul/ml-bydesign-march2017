@@ -1,0 +1,14 @@
+<script src="https://api.filepicker.io/v2/filepicker.js"></script>
+<script type="text/javascript">
+function set_url(url){
+  window.location = "/?image="+url;
+}
+</script>
+<div style="text-align: center; margin: auto;">
+<img width=800 src="/papergram.png">
+<br>
+<input type="filepicker" data-fp-apikey="<%= ENV['FP_KEY'] %>" name="myName" onchange="set_url(event.fpfile.url)"/>
+<% if @image %>
+  <img height="800" width="800" src="http://convert.somatic.io/api/v1.2/cdn-query?id=8nX1JGZj&api_key=<%= ENV['SOMATIC_API_KEY'] %>&--input=<%=@image %>" >
+<% end %>
+</div>
